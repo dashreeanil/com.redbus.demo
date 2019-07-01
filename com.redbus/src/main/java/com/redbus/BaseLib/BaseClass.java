@@ -14,7 +14,16 @@ import com.redbus.Utills.ActionUtils;
 public class BaseClass implements GlobalVariable {
 
 	WebDriver driver;
+	public static String userDirectory = System.getProperty("user.dir");
 
+	/**
+	 * @param browser
+	 * @throws IOException
+	 * @author:
+	 * 
+	 * 			Description: Method for dynamically launching the browser depending
+	 *          upon the parameter.
+	 */
 	@Parameters({ "browser_Name" })
 	@BeforeClass
 
@@ -31,12 +40,11 @@ public class BaseClass implements GlobalVariable {
 			driver.get(ActionUtils.getProertyValue(CONFIGPRPERTIESFILEPATH, "url"));
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(ITO, TimeUnit.SECONDS);
-		} /*else if (browser.equalsIgnoreCase("ie")) {
-			System.setProperty(IE_KEY, IE_VALUE);
-			driver.get(URL);
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(ITO, TimeUnit.SECONDS);
-		} */else {
+		} /*
+			 * else if (browser.equalsIgnoreCase("ie")) { System.setProperty(IE_KEY,
+			 * IE_VALUE); driver.get(URL); driver.manage().window().maximize();
+			 * driver.manage().timeouts().implicitlyWait(ITO, TimeUnit.SECONDS); }
+			 */else {
 			System.out.println("Kindly enter a valid browser name");
 		}
 	}
